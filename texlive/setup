@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 # Exit with nonzero exit code if anything fails.
 set -e
 
@@ -24,6 +26,7 @@ export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
 # Install extra packages from provided list.
 readarray -t texlive_packages < "$DIR/texlive.packages"
+echo "$texlive_packages"
 tlmgr install "${texlive_packages[@]}"
 
 # NOTE: we do no cleanup, but this is meant
