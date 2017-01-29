@@ -7,10 +7,10 @@ set -e
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Make a temp dir.
-tmp_dir=$(mktemp -d)
+tmp=$(mktemp -d)
 
 # Fetch and extract TeX Live installer.
-cd "$tmp_dir" || exit 1
+cd "$tmp" || exit 1
 wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 tar -xzf install-tl-unx.tar.gz
 
@@ -23,4 +23,4 @@ readarray -t texlive_packages < "$dir/texlive.packages"
 tlmgr install "${texlive_packages[@]}"
 
 # Be nice and remove tmp files.
-rm -rf "$tmp_dir"
+rm -rf "$tmp"

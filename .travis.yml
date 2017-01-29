@@ -1,8 +1,6 @@
 language: generic
 install:
   - source texlive/install
-  - echo "$dir"
-  - echo "$tmp_dir"
 script:
   - echo 'Hello world.\bye' > foo.tex
   - tex foo.tex
