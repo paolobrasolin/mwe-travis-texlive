@@ -13,11 +13,12 @@ tmp_dir=$(mktemp -d)
 cd "$tmp_dir" || exit 1
 wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 tar -xzf install-tl-unx.tar.gz
-ls
-# cd install-tl-20* || exit 1
+cd install-tl-20* || exit 1
 
+ls
 # Install TeX Live using provided custom profile.
-# ./install-tl --profile="$DIR/texlive.profile"
+./install-tl --profile="$DIR/texlive.profile"
+ls
 
 # Post install config.
 # export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
