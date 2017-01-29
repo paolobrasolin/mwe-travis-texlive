@@ -1,36 +1,8 @@
 #!/usr/bin/env bash
 
-# Exit with nonzero exit code if anything fails.
-set -e
-
-# Since we're sourcing the script, backup the pwd.
-pwd_bak=$(pwd)
-
-# Get the dir of this script.
-dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-# Make a temp dir.
-tmp_dir=$(mktemp -d)
-
-# Fetch and extract TeX Live installer.
-cd "$tmp_dir" || exit 1
-wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-tar -xzf install-tl-unx.tar.gz
-
-# Install TeX Live using provided custom profile.
-cd install-tl-20* || exit 1
-./install-tl --profile="$dir/texlive.profile"
+# Run the installer
+"$TRAVIS_BUILD_DIR/texlive/installer"
 
 # Standard post install step.
 # MEMO: /tmp/texlive is defined as root in the profile file.
 export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
-
-# Install extra packages from packages file.
-readarray -t texlive_packages < "$dir/texlive.packages"
-tlmgr install "${texlive_packages[@]}"
-
-# Since we're sourcing the script, restore the pwd.
-cd "$pwd_bak"
-
-# Be nice and remove tmp files.
-rm -rf "$tmp_dir"
