@@ -1,0 +1,6 @@
+language: generic
+install:
+  - ./texlive/setup
+branches:
+  only:
+  - master
