@@ -3,6 +3,9 @@
 # Exit with nonzero exit code if anything fails.
 set -e
 
+# Since we're sourcing the script, backup the pwd.
+pwd_bak=$(pwd)
+
 # Get the dir of this script.
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -25,3 +28,9 @@ export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 # Install extra packages from packages file.
 readarray -t texlive_packages < "$dir/texlive.packages"
 tlmgr install "${texlive_packages[@]}"
+
+# Since we're sourcing the script, restore the pwd.
+cd "$pwd_bak"
+
+# Be nice and remove tmp files.
+rm -rf "$tmp_dir"
