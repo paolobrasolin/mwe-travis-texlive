@@ -1,5 +1,6 @@
 language: generic
 install:
+  - ls
   - ./texlive/setup
 branches:
   only:
