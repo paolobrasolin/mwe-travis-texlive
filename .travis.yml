@@ -4,7 +4,6 @@ install:
 script:
   - echo 'Hello world.\bye' > foo.tex
   - tex foo.tex
-  - ls
 branches:
   only:
   - master
