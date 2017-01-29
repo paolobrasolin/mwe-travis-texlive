@@ -1,6 +1,6 @@
 language: generic
 install:
-  - ./texlive/setup
+  - source texlive/setup
 script:
   - echo 'Hello world.\bye' > foo.tex
   - tex foo.tex
