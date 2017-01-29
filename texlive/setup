@@ -6,17 +6,14 @@ set -e
 # Get the dir of this script.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo $DIR
-
 # Make a temp dir.
 tmp_dir=$(mktemp -d)
 
-echo $tmp_dir
-
 # Fetch and extract TeX Live installer.
 cd "$tmp_dir" || exit 1
-# wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-# tar -xzf install-tl-unx.tar.gz
+wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+tar -xzf install-tl-unx.tar.gz
+ls
 # cd install-tl-20* || exit 1
 
 # Install TeX Live using provided custom profile.
