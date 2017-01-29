@@ -5,7 +5,7 @@
 # so we can act freely in it without polluting the scope in any way.
 
 # Run the installer.
-"$TRAVIS_BUILD_DIR/texlive/installer"
+"$TRAVIS_BUILD_DIR/texlive/installer" || exit 1
 
 # Standard post install step.
 # MEMO: /tmp/texlive is defined as the root in the profile file.
