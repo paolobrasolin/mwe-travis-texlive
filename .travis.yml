@@ -1,8 +1,10 @@
 language: generic
 install:
-  - ls
-  - ls texlive
   - ./texlive/setup
+script:
+  - echo 'Hello world.\bye' > foo.tex
+  - tex foo.tex
+  - ls
 branches:
   only:
   - master

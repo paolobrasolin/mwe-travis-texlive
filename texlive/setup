@@ -15,10 +15,8 @@ wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 tar -xzf install-tl-unx.tar.gz
 cd install-tl-20* || exit 1
 
-ls
 # Install TeX Live using provided custom profile.
 ./install-tl --profile="$DIR/texlive.profile"
-ls
 
 # Post install config.
 export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
@@ -26,7 +24,6 @@ export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
 # Install extra packages from provided list.
 readarray -t texlive_packages < "$DIR/texlive.packages"
-echo "$texlive_packages"
 tlmgr install "${texlive_packages[@]}"
 
 # NOTE: we do no cleanup, but this is meant
