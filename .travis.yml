@@ -2,7 +2,7 @@ language: generic
 install:
   - source texlive/install
 script:
-  - echo '\\documentclass{article}\\begin{document}Hello world.\\end{document}' > foo.tex
+  - echo '\documentclass{article}\begin{document}Hello world.\end{document}' > foo.tex
   - latexmk foo.tex
 branches:
   only:
