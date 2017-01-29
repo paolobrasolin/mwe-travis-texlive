@@ -26,8 +26,8 @@ export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
 # Install extra packages from provided list.
 readarray -t texlive_packages < "$DIR/texlive.packages"
-echo $texlive_packages
-# tlmgr install "${texlive_packages[@]}"
+echo "$texlive_packages"
+tlmgr install "${texlive_packages[@]}"
 
 # NOTE: we do no cleanup, but this is meant
 #   for a simple Travis session, so it's ok.
